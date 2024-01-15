@@ -55,3 +55,6 @@ body{
   @supports (display:grid) {
     .note {display:none;}
   }
+  .form-control {
+    font-size: 52px;
+  }
