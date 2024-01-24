@@ -12,7 +12,13 @@ let idmapping = [
     [0,0,0],
     [1,1,1],[1,2,1],[1,3,1],[1,4,2],[1,5,2],[1,6,2],[1,7,3],[1,8,3],[1,9,3],
     [2,1,1],[2,2,1],[2,3,1],[2,4,2],[2,5,2],[2,6,2],[2,7,3],[2,8,3],[2,9,3],
-
+    [3,1,1],[3,2,1],[3,3,1],[3,4,2],[3,5,2],[3,6,2],[3,7,3],[3,8,3],[3,9,3],
+    [4,1,4],[4,2,4],[4,3,4],[4,4,5],[4,5,5],[4,6,5],[4,7,6],[4,8,6],[4,9,6],
+    [5,1,4],[5,2,4],[5,3,4],[5,4,5],[5,5,5],[5,6,5],[5,7,6],[5,8,6],[5,9,6],
+    [6,1,4],[6,2,4],[6,3,4],[6,4,5],[6,5,5],[6,6,5],[6,7,6],[6,8,6],[6,9,6],
+    [7,1,7],[7,2,7],[7,3,7],[7,4,8],[7,5,8],[7,6,8],[7,7,9],[7,8,9],[7,9,9],
+    [8,1,7],[8,2,7],[8,3,7],[8,4,8],[8,5,8],[8,6,8],[8,7,9],[8,8,9],[8,9,9],
+    [9,1,7],[9,2,7],[9,3,7],[9,4,8],[9,5,8],[9,6,8],[9,7,9],[9,8,9],[9,9,9],
 ];
 let rij1 = [];
 let rij2 = [];
@@ -78,15 +84,45 @@ function generateSudoku()
     //daarmee selecteren we dus een sudoku
     let selected_sudoku = sudokus[random_nmbr];
     let index = 0;
-    for(i = 1; i <= 81; i++){
-        if(selected_sudoku[index] == 0){
-            document.getElementById(i).innerText = "";
-            document.getElementById(i).classList.remove("bg-secondary-subtle");
+    //de loop-constructie met een for-loop
+    // for(i = 1; i <= 81; i++){
+    //     if(selected_sudoku[index] == 0){
+    //         document.getElementById(i).innerText = "";
+    //         document.getElementById(i).classList.remove("bg-secondary-subtle");
 
-        } else {
-            document.getElementById(i).innerText = selected_sudoku[index];
-            document.getElementById(i).classList.add("bg-secondary-subtle");
-        }
-        index++;
+    //     } else {
+    //         document.getElementById(i).innerText = selected_sudoku[index];
+    //         document.getElementById(i).classList.add("bg-secondary-subtle");
+    //     }
+    //     index++;
+    // }
+    //de loop-constructie met een while-loop
+    // let i = 1;
+    // while(i <= 81){
+    //     if(selected_sudoku[index] == 0){
+    //         document.getElementById(i).innerText = "";
+    //         document.getElementById(i).classList.remove("bg-secondary-subtle");
+
+    //     } else {
+    //         document.getElementById(i).innerText = selected_sudoku[index];
+    //         document.getElementById(i).classList.add("bg-secondary-subtle");
+    //     }
+    //     index++;
+    //     i++;
+    // }
+    //de loop-construcite met een foreach-loop
+    //DE FOREACH LOOP IS BIJ UITSTEK GESCHIKT VOOR HET DOORLOPEN VAN EEN ARRAY
+    selected_sudoku.forEach(zetCijferinGrid);
+}
+
+function zetCijferinGrid(item, index)
+{
+    if(item == 0){
+        document.getElementById(index+1).innerText = "";
+        document.getElementById(index+1).classList.remove("bg-secondary-subtle");
+
+    } else {
+        document.getElementById(index+1).innerText = item;
+        document.getElementById(index+1).classList.add("bg-secondary-subtle");
     }
 }
