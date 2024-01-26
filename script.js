@@ -63,7 +63,29 @@ function selectCijfer(cijfer)
     if(activeId == 0){
         return
     }
-    document.getElementById(activeId).innerText = cijfer;
+    if(eval("rij" + idmapping[activeId][0]).includes(cijfer)){
+        alert("kan niet");
+    }
+    else {
+        if(eval("kolom" + idmapping[activeId][1]).includes(cijfer)){
+            alert("kan niet");
+        }
+        else 
+        {
+            if(eval("blok" + idmapping[activeId][2]).includes(cijfer)){
+                alert("kan niet");
+            }
+            else {
+                document.getElementById(activeId).innerText = cijfer;
+                eval("rij" + idmapping[activeId][0]).push(cijfer);
+                eval("kolom" + idmapping[activeId][1]).push(cijfer);
+                eval("blok" + idmapping[activeId][2]).push(cijfer)
+            }
+        }
+    }
+    console.log(rij1);
+    console.log(kolom1);
+    console.log(blok1);
 }
 
 function activateCell(id)
@@ -124,5 +146,25 @@ function zetCijferinGrid(item, index)
     } else {
         document.getElementById(index+1).innerText = item;
         document.getElementById(index+1).classList.add("bg-secondary-subtle");
+        if(index < 9)
+            rij1.push(item);
+        else if(index < 18)
+            rij2.push(item);
+        else if(index < 27)
+            rij3.push(item);
+        else if(index < 36)
+            rij4.push(item);
+        else if(index < 45)
+            rij5.push(item);
+        else if(index < 54)
+            rij6.push(item);
+        else if(index < 63)
+            rij7.push(item);
+        else if(index < 72)
+            rij8.push(item);
+        else
+            rij9.push(item);
+        if(index == 0 || index == 9 || index == 18 || index == 27 || index == 36 || index == 45 || index == 54 || index == 63 || index == 72)
+            kolom1.push(item);
     }
 }
